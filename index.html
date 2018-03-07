@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>footie ages</title>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    </head>
+    <body>
+        <h1>EPL teams by normalized age</h1>
+        <a href="https://github.com/fspieler/footie_ages">Link to repo/data</a>
+        <p>Thanks to <a href="https://football-api.com">football-api.com</a> for providing data.</p>
+        <table id="table"></table>
+    </body>
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#table').DataTable({
+        "processing" : true,
+        "ajax" : {
+            "url" : "https://fspieler.github.io/footie_ages/results.json",
+            dataSrc : ''
+        },
+        "columns" : [ {
+            "data" : "name",
+            "title": "Club"
+        }, {
+            "data" : "position",
+            "title": "League standing"
+        }, {
+            "data" : "normalized_age",
+            "title": "Normalized age"
+        }, {
+            "data" : "normalized_outfield_age",
+            "title": "Normalized age (outfield players)"
+        }, {
+            "data" : "normalized_keeper_age",
+            "title": "Normalized age (keepers)"
+        }],
+        "pageLength" : 20
+    });
+});
+    </script>
+</html>
